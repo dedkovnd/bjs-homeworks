@@ -23,7 +23,7 @@ function getSolutions(a,b,c) {
 }
 
 function showSolutionsMessage(a,b,c) {
-    let result = getSolutions();
+    let result = getSolutions(a,b,c);
     console.log(`Вычесляем корни квадратного уравнения ${a}*x*x + ${b}*x + ${c} = 0`);
     console.log(`Значение дискриминанта ${result.d}`);
     if (result.d < 0) {
@@ -36,23 +36,26 @@ function showSolutionsMessage(a,b,c) {
 }
 
 function getAverageScore(...data) {
-    function getAverageMark(marks) {
-        let sum = 0;
-        for (let i = 0; i < marks.length; i++) {
-            sum +=arr[i];
-        }
-        return sum/marks.length;
-    }
+
+    let result = {};
 
     for (let key in data) {
-        return data = {key: getAverageMark(data[key])};
-    }
+        function getAverageMark(marks) {
+            marks = data[key];
+            let sum = 0;
+            for (let i = 0; i < marks.length; i++) {
+                sum +=marks[i];
+            }
+            return sum/marks.length;
+        }
 
+        result = {key: getAverageMark(data[key])};
+    }
+    return result;
 }
 
 function getPersonData(secretData) {
-    let secret;
-    //как присвоить значение secret я так и не смог разобраться
+
 
     function getDecodedName(secret) {
         let decodedName;
@@ -66,8 +69,8 @@ function getPersonData(secretData) {
     }
 
     let name = {
-        firstName: getDecodedName(),
-        lastName: getDecodedName()
+        firstName: getDecodedName(secretData.aaa),
+        lastName: getDecodedName(secretData.bbb)
     }
     console.log(name);
 }
