@@ -31,9 +31,9 @@ function sayHello() {
 
 function getGreeting(name) {
     if (name.length > 0) {
-        console.log(`Привет, меня зовут ${name}`)
+        return `Привет, меня зовут ${name}`;
     } else {
-        console.log(`Привет, меня зовут Аноним`);
+        return `Привет, меня зовут Аноним`;
     }
     //return greeting;
 }
