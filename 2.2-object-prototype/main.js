@@ -27,7 +27,7 @@ function getAnimalSound(animal) {
 
     let sound = new animal();
     if (animal !==undefined) {
-        return sound;
+        return animal.sound;
     }
     // код для задачи №1 писать здесь
 }
@@ -45,7 +45,7 @@ function initCalculateStatement() {
 function getAverageMark(marks) {
     let sum = 0;
     for (let i = 0; i < marks.length; i++) {
-        sum += marks[i];
+        sum += parseInt(marks[i]);
     }
     return Math.round(sum/marks.length);
 
