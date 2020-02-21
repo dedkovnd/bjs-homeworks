@@ -35,24 +35,31 @@ function showSolutionsMessage(a,b,c) {
     }
 }
 
-function getAverageScore(...data) {
+///////////
+
+function getAverageScore(data) {
 
     let result = {};
 
-    for (let key in data) {
-        function getAverageMark(marks) {
-            marks = data[key];
-            let sum = 0;
-            for (let i = 0; i < marks.length; i++) {
-                sum +=marks[i];
-            }
-            return sum/marks.length;
+    function getAverageMark(marks) {
+        let sum = 0;
+        for (let i = 0; i < marks.length; i++) {
+            sum +=marks[i];
         }
-
-        result = {key: getAverageMark(data[key])};
+        return sum/marks.length;
     }
+
+    for (let key in data) {
+       result[key] = getAverageMark(data[key]);
+    }
+
+    for (let key in result) {
+        result.average = getAverageMark(result[key]);
+    }
+
     return result;
 }
+//////////
 
 function getPersonData(secretData) {
 
