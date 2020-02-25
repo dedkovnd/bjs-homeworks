@@ -53,9 +53,7 @@ function getAverageScore(data) {
        result[key] = getAverageMark(data[key]);
     }
 
-    for (let key in result) {
-        result.average = getAverageMark(result[key]);
-    }
+    result.average = getAverageMark(Object.values(result));
 
     return result;
 }
