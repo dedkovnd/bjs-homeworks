@@ -16,12 +16,12 @@ class Weapon {
     }
 
     getDamage() {
-        if (Weapon.durability >= this.durability) {
+        if (this.durability >= Weapon.durability) {
             return this.attack;
         }
-        else if (Weapon.durability < this.durability*0.3) {
+        else if (this.durability < Weapon.durability*0.3) {
             return this.attack/2;
-        } else if (Weapon.durability === 0){
+        } else if (this.durability === 0){
             return 0;
         }
     }
@@ -63,19 +63,19 @@ class Staff extends Weapon {
     }
 }
 
-class LongBow extends Bow {
+class LongBow extends Weapon {
     constructor() {
         super({name: 'Long Bow', attack: 15, durability: Bow.durability, range: 4});
     }
 }
 
-class Axe extends Sword {
+class Axe extends Weapon {
     constructor() {
         super({name: 'Axe', attack: 27, durability: 800, range: Sword.range});
     }
 }
 
-class StaffStorm extends Staff {
+class StaffStorm extends Weapon {
     constructor() {
         super({name: 'Staff of the storm', attack: 10, durability: Staff.durability, range: 3});
     }
