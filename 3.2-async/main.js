@@ -1,13 +1,13 @@
 class AlarmClock {
     constructor() {
         this.alarmCollection = [];
-        this.timerId = undefined;
+        this.timerId = null;
     }
     addClock(time, callback,timerId){
-      if(timerId === undefined) {
+      if(timerId === null) {
           console.error("please,enter Id")
       } else {
-          if(this.alarmCollection.find((elem)=> {return elem.id === timerId}) !== undefined) {
+          if(this.alarmCollection.find((elem)=> {return elem.id === timerId}) !== null) {
               console.error("this Id has been created")
           } else {
               this.alarmCollection.push({id : timerId, callback: callback, time: time})
@@ -38,15 +38,15 @@ class AlarmClock {
     }
 
     start(){
-        if(this.timerId === undefined) {
+        if(this.timerId === null) {
             this.timerId = setInterval(() => {this.alarmCollection.forEach(elem=>this.checkClock(elem))}, 5000)
         }
     }
 
     stop() {
-        if(this.timerId !== undefined) {
+        if(this.timerId !== null) {
             clearInterval(this.timerId);
-            this.timerId = undefined;
+            this.timerId = null;
         }
     }
 
