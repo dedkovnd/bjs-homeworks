@@ -3,6 +3,7 @@ class Weapon {
         this.name = props.name;
         this.attack = props.attack;
         this.durability = props.durability;
+        this.initDurability = props.durability;
         this.range = props.range;
     }
     takeDamage(damage) {
@@ -16,13 +17,12 @@ class Weapon {
     }
 
     getDamage() {
-        if (this.durability >= Weapon.durability) {
-            return this.attack;
-        }
-        else if (this.durability < Weapon.durability*0.3) {
-            return this.attack/2;
-        } else if (this.durability === 0){
+        if (this.durability === 0) {
             return 0;
+        } else if (this.durability >= this.initDurability * 0.3) {
+            return this.attack;
+        } else if (this.durability < this.initDurability * 0.3) {
+            return this.attack / 2;
         }
     }
     isBroken(){
@@ -63,21 +63,31 @@ class Staff extends Weapon {
     }
 }
 
-class LongBow extends Weapon {
+class LongBow extends Bow {
     constructor() {
-        super({name: 'Long Bow', attack: 15, durability: Bow.durability, range: 4});
+        super(Bow.durability);
+        this.name = 'Long Bow';
+        this.attack = 15;
+        this.range = 4;
+
     }
 }
 
-class Axe extends Weapon {
+class Axe extends Sword {
     constructor() {
-        super({name: 'Axe', attack: 27, durability: 800, range: Sword.range});
+        super(Sword.range);
+        this.name = 'Axe';
+        this.attack = 27;
+        this.durability = 800;
     }
 }
 
-class StaffStorm extends Weapon {
+class StaffStorm extends Staff {
     constructor() {
-        super({name: 'Staff of the storm', attack: 10, durability: Staff.durability, range: 3});
+        super(Staff.durability);
+        this.name = 'Staff of the storm';
+        this.attack = 10;
+        this.range = 3;
     }
 }
 
